@@ -1,5 +1,17 @@
 # Testing Module Assignment 1
 
+```bash
+git clone git@github.com:missKatiaPunter/testing-assignment-1-starter.git
+npm i
+```
+
+or
+
+```bash
+git clone git@github.com:missKatiaPunter/testing-assignment-1-starter.git
+yarn install
+```
+
 ## The spec
 
 - Section A. Implement tests that use assertion methods suitable for primitive result values (string, number, bigint, boolean, undefined, symbol, and null) (40 marks).
