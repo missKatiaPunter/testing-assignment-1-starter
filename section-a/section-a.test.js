@@ -60,6 +60,24 @@ describe('--- Subtraction() function --- ', () => {
             subtract();
         }).toThrow('Error: At least 1 required parameter is blank');
     });
+
+    test('First parameter is NaN', () => {
+        expect(() => {
+            subtract('foo', 4);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+    });
+
+    test('Second parameter is NaN', () => {
+        expect(() => {
+            subtract(4, 'bar');
+        }).toThrow('Error: At least 1 required parameter is not a number');
+    });
+
+    test('Both parameters are NaN', () => {
+        expect(() => {
+            subtract('foo', 'bar');
+        }).toThrow('Error: At least 1 required parameter is not a number');
+    });
 });
 
 // Section A 03. Test the divide() function
