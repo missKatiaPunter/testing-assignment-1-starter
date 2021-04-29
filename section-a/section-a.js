@@ -1,9 +1,6 @@
 // A02
 const subtract = (a,b) => {
-    if(!a || !b){ // Verify the parameters are not empty / blank
-        throw new Error('Error: At least 1 required parameter is blank');
-    }
-    if(isNaN(a) === true || isNaN(b) === true){ // Check both parameters are numbers
+    if(typeof(a) != 'number' || typeof(b) != 'number'){
         throw new Error('Error: At least 1 required parameter is not a number');
     }
     return a-b;

@@ -46,38 +46,77 @@ describe('--- Subtraction() function --- ', () => {
     test('First parameter is a blank', () => {
         expect(() => {
             subtract(null, -4);
-        }).toThrow('Error: At least 1 required parameter is blank');
+        }).toThrow('Error: At least 1 required parameter is not a number');
     });
 
     test('Second parameter is a blank', () => {
         expect(() => {
             subtract(-4, null);
-        }).toThrow('Error: At least 1 required parameter is blank');
+        }).toThrow('Error: At least 1 required parameter is not a number');
     });
 
     test('Both parameters are blank', () => {
         expect(() => {
             subtract();
-        }).toThrow('Error: At least 1 required parameter is blank');
+        }).toThrow('Error: At least 1 required parameter is not a number');
     });
 
-    test('First parameter is NaN', () => {
+    test('At least one parameter is NaN', () => {
         expect(() => {
             subtract('foo', 4);
         }).toThrow('Error: At least 1 required parameter is not a number');
-    });
 
-    test('Second parameter is NaN', () => {
         expect(() => {
             subtract(4, 'bar');
         }).toThrow('Error: At least 1 required parameter is not a number');
-    });
 
-    test('Both parameters are NaN', () => {
         expect(() => {
             subtract('foo', 'bar');
         }).toThrow('Error: At least 1 required parameter is not a number');
     });
+
+    test('At least one parameter is a boolean', () => {
+        expect(() => {
+            subtract(true, -4);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(-4, true);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(false, -4);
+        }).toThrow('Error: At least 1 required parameter is not a number'); 
+        expect(() => {
+            subtract(-4, false);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(true, false);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(false, true);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(true, true);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(false, false);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+    });
+
+    test('Invalid datatype inputted', () => {
+        expect(() => {
+            subtract({}, 4);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(undefined, 4);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract("", 4);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+        expect(() => {
+            subtract(null, 4);
+        }).toThrow('Error: At least 1 required parameter is not a number');
+    });
+
 });
 
 // Section A 03. Test the divide() function
