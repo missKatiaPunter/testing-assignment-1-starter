@@ -1,10 +1,18 @@
 // A02
-const subtract = (a,b) => a-b;
+const subtract = (a,b) => {
+    if(!a || !b){ // Verify the parameters are not empty / blank
+        throw new Error('Error: At least 1 required parameter is blank');
+    }
+    if(isNaN(a) === true || isNaN(b) === true){ // Check both parameters are numbers
+        throw new Error('Error: At least 1 required parameter is not a number');
+    }
+    return a-b;
+};
 
 // A03
 const divide = (numerator, denominator) => {
     if (denominator === 0 || isNaN(denominator)) {
-        throw new Error(`The value ${denominator} cannot be used as the denominator`);
+        throw new Error('The value ${denominator} cannot be used as the denominator');
     }
     else {
         return parseFloat(numerator / denominator);
