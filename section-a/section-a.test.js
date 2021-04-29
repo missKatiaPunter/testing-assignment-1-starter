@@ -18,8 +18,7 @@ describe('--- Smoke test ---', () => {
 // Feel free to delete all of the starter test block and make it better
 
 describe('--- Subtraction() function --- ', () => {
-    test('Subtract 2 positive numbers, where the first parameter is larger than the second one', () => {
-
+    test('Subtract 2 positive numbers, where the first parameter is larger than the second one', () => 
         expect(subtract(5, 1)).toEqual(4);
     });
 
@@ -99,7 +98,7 @@ describe('--- Subtraction() function --- ', () => {
         expect(() => {
             subtract(true, true);
         }).toThrow('Error: At least 1 required parameter is not a number');
-        
+
         expect(() => {
             subtract(false, false);
         }).toThrow('Error: At least 1 required parameter is not a number');
@@ -125,7 +124,7 @@ describe('--- Subtraction() function --- ', () => {
 // Section A 03. Test the divide() function
 // Feel free to delete all of the starter test block and make it better
 
-it('Should divide numbers and not allow division by 0', () => {
+it.skip('Should divide numbers and not allow division by 0', () => {
 
 });
 
