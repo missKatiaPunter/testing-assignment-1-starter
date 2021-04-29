@@ -43,19 +43,15 @@ describe('--- Subtraction() function --- ', () => {
         expect(subtract(-3, -4)).toEqual(1);
     });   
 
-    test('First parameter is a blank', () => {
+    test('At least one parameter is blank', () => {
         expect(() => {
             subtract(null, -4);
         }).toThrow('Error: At least 1 required parameter is not a number');
-    });
 
-    test('Second parameter is a blank', () => {
         expect(() => {
             subtract(-4, null);
         }).toThrow('Error: At least 1 required parameter is not a number');
-    });
 
-    test('Both parameters are blank', () => {
         expect(() => {
             subtract();
         }).toThrow('Error: At least 1 required parameter is not a number');
@@ -79,24 +75,31 @@ describe('--- Subtraction() function --- ', () => {
         expect(() => {
             subtract(true, -4);
         }).toThrow('Error: At least 1 required parameter is not a number');
+
         expect(() => {
             subtract(-4, true);
         }).toThrow('Error: At least 1 required parameter is not a number');
+
         expect(() => {
             subtract(false, -4);
         }).toThrow('Error: At least 1 required parameter is not a number'); 
+
         expect(() => {
             subtract(-4, false);
         }).toThrow('Error: At least 1 required parameter is not a number');
+
         expect(() => {
             subtract(true, false);
         }).toThrow('Error: At least 1 required parameter is not a number');
+
         expect(() => {
             subtract(false, true);
         }).toThrow('Error: At least 1 required parameter is not a number');
+
         expect(() => {
             subtract(true, true);
         }).toThrow('Error: At least 1 required parameter is not a number');
+        
         expect(() => {
             subtract(false, false);
         }).toThrow('Error: At least 1 required parameter is not a number');
