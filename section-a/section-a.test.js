@@ -42,6 +42,24 @@ describe('--- Subtraction() function --- ', () => {
     test('Subtract 2 negative numbers, result > 0.', () => {
         expect(subtract(-3, -4)).toEqual(1);
     });   
+
+    test('First parameter is a blank', () => {
+        expect(() => {
+            subtract(null, -4);
+        }).toThrow('Error: At least 1 required parameter is blank');
+    });
+
+    test('Second parameter is a blank', () => {
+        expect(() => {
+            subtract(-4, null);
+        }).toThrow('Error: At least 1 required parameter is blank');
+    });
+
+    test('Both parameters are blank', () => {
+        expect(() => {
+            subtract();
+        }).toThrow('Error: At least 1 required parameter is blank');
+    });
 });
 
 // Section A 03. Test the divide() function
