@@ -8,17 +8,43 @@ const {
 } = require("./section-a.js");
 
 // Section A 01. Wrtite a smoke test
+describe('--- Smoke test ---', () => {
+    test('Check that tests are working', () => {
+        expect(1).toBeTruthy();
+    });
+})
 
 // Section A 02. Test the subtraction() function
 // Feel free to delete all of the starter test block and make it better
 
-describe('Test the ', () => {
-    test("Subtract 2 positive numbers, where the first parameter is larger than the scond one", () => {
-        let num1 = 5;
+describe('--- Subtraction() function --- ', () => {
+    test('Subtract 2 positive numbers, where the first parameter is larger than the second one', () => {
+        /* let num1 = 5;
         let num2 = 1;
         var expected = 4;
-        var output = subtract(num1, num2);
+        var output = subtract(num1, num2); */
+        expect(subtract(5, 1)).toEqual(4);
     });
+
+    test('Subtract 2 positive numbers, where the second parameter is larger than the first one', () => {
+        expect(subtract(1, 5)).toEqual(-4);
+    })
+
+    test('Subtract 1 positive, 1 negative number, where the first parameter is the negative number.', () => {
+        expect(subtract(-4, 3)).toEqual(-7);
+    })
+
+    test('Subtract 1 positive, 1 negative number, where the second parameter is the negative number.', () => {
+        expect(subtract(4, -3)).toEqual(7);
+    })
+
+    test('Subtract 2 negative numbers, result < 0.', () => {
+        expect(subtract(-7, -3)).toEqual(-4);
+    })
+
+    test('Subtract 2 negative numbers, result > 0.', () => {
+        expect(subtract(-3, -4)).toEqual(1);
+    })
 });
 
 // Section A 03. Test the divide() function
