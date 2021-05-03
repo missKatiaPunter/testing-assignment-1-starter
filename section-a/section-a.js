@@ -49,9 +49,14 @@ const numberToString = num => num.toString();
 
 // Not all functions are exported, be careful 👇
 
-module.exports = { 
+module.exports = {
     subtract,
     divide,
     isDivisibleBy,
-    disemvowel
+    disemvowel,
+    numberToString,
+    strEndsWith,
+    removeUrlAnchor,
+    gradeAssignment,
+    areaOrPerimeter
 };
