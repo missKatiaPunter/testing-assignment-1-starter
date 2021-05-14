@@ -20,7 +20,22 @@ const divide = (numerator, denominator) => {
 const isDivisibleBy = (number, a, b) => number % a === 0 && number % b === 0;
 
 // A05 - Pay attention to the fact that it is area OR perimeter
-const areaOrPerimeter = (l , w) => l === w ? l*w : 2*(l+w);
+const areaOrPerimeter = (l , w) => {
+    if (typeof(l) != 'number' || typeof(w) != 'number') {
+        throw new Error('Error: At least 1 required parameter is invalid.');
+    }
+
+    if (l < 0 || w < 0) {
+        throw new Error('Error: At least 1 required parameter was less than zero.');
+    }
+
+    switch(l === w) {
+        case true:
+            return l*w;
+        case false:
+            return 2*(l+w);
+    }
+} //l === w ? l*w : 2*(l+w);
 
 // A06
 const gradeAssignment = (s1, s2, s3) => {
@@ -58,5 +73,10 @@ module.exports = {
     subtract,
     divide,
     isDivisibleBy,
-    disemvowel
+    disemvowel,
+    areaOrPerimeter,
+    gradeAssignment,
+    strEndsWith,
+    removeUrlAnchor,
+    numberToString
 };

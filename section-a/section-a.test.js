@@ -4,7 +4,11 @@ const {
     divide, 
     isDivisibleBy,
     gradeAssignment,
-    areaOrPerimeter
+    areaOrPerimeter,
+    disemvowel,
+    strEndsWith,
+    removeUrlAnchor,
+    numberToString
 } = require("./section-a.js");
 
 // Section A 01. Wrtite a smoke test
@@ -12,7 +16,7 @@ describe('--- Smoke test ---', () => {
     test('Check that tests are working', () => {
         expect(1).toBeTruthy();
     });
-})
+});
 
 // Section A 02. Test the subtraction() function
 // Feel free to delete all of the starter test block and make it better
@@ -133,7 +137,7 @@ describe('--- Divide() function ---', () => {
         expect(divide(26.4, 4)).toEqual(6.6); // decimal numerator
         expect(divide(3, 1.5)).toEqual(2); // decimal denominator
         expect(divide(2.4, 1.2)).toEqual(2); // both decimal
-    })
+    });
     
     test('Divide by 0', () => {
         expect(() => {
@@ -176,13 +180,13 @@ describe('--- isDivisibleBy() function ---', () => {
         expect(isDivisibleBy(5,2.5,1)).toBeTruthy();
         expect(isDivisibleBy(5,1,2.5)).toBeTruthy();
         expect(isDivisibleBy(-3,3,-1.5)).toBeTruthy();
-    })
+    });
 
     test('Valid input, invalid requests', () => { // should all be false.
         expect(isDivisibleBy(10,3,1)).toBeFalsy(); // a not a factor
         expect(isDivisibleBy(10,1,3)).toBeFalsy(); // b not a factor
         expect(isDivisibleBy(10,-7,16)).toBeFalsy(); // both not factors
-    })
+    });
 
     test('Invalid inputs', () => {
         expect(isDivisibleBy()).toBeFalsy();
@@ -193,10 +197,21 @@ describe('--- isDivisibleBy() function ---', () => {
         expect(isDivisibleBy({},3,-1.5)).toBeFalsy();
         expect(isDivisibleBy(-3,[],-1.5)).toBeFalsy();
         expect(isDivisibleBy(-3,'foobar',-1.5)).toBeFalsy();
-    })
+    });
 });
-// Section A 05. Test the areaOrPerimeter() function
 
+// Section A 05. Test the areaOrPerimeter() function
+describe('--- areaOrPerimiter() function ---', () => {
+    test('Valid requests', () => {
+        expect(areaOrPerimeter(10,5)).toBe(30);
+        expect(areaOrPerimeter(10,10)).toBe(100);
+    });  
+    test('Invalid data types', () => {
+        expect(() => {
+            areaOrPerimeter(true, 3);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+    });
+});
 // Section A 06. Test the gradeAssignment() function
 
 // Section A 07. Test the disemvowel() function
