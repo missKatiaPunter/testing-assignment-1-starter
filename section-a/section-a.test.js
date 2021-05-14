@@ -122,8 +122,19 @@ describe('--- Subtraction() function --- ', () => {
 });
 
 // Section A 03. Test the divide() function
-// Feel free to delete all of the starter test block and make it better
 describe('--- Divide() function ---', () => {
+    test('Valid divison operations', () => {
+        expect(divide(5, 1)).toEqual(5); // larger numerator
+        expect(divide(1, 5)).toEqual(0.2); // larger denominator
+        expect(divide(300, 300)).toEqual(1); // equal
+        expect(divide(-5, 2)).toEqual(-2.5); // negative numerator
+        expect(divide(2, -5)).toEqual(-0.4); // negative denominator
+        expect(divide(-3, -6)).toEqual(0.5); // both negative
+        expect(divide(26.4, 4)).toEqual(6.6); // decimal numerator
+        expect(divide(3, 1.5)).toEqual(2); // decimal denominator
+        expect(divide(2.4, 1.2)).toEqual(2); // both decimal
+    })
+    
     test('Divide by 0', () => {
         expect(() => {
             divide(1, 0);
@@ -154,21 +165,36 @@ describe('--- Divide() function ---', () => {
         }).toThrow('Error: At least 1 required parameter is invalid');
     });
 
-    test('Valid divison operations', () => {
-        expect(divide(5, 1)).toEqual(5); // larger numerator
-        expect(divide(1, 5)).toEqual(0.2); // larger denominator
-        expect(divide(300, 300)).toEqual(1); // equal
-        expect(divide(-5, 2)).toEqual(-2.5); // negative numerator
-        expect(divide(2, -5)).toEqual(-0.4); // negative denominator
-        expect(divide(-3, -6)).toEqual(0.5); // both negative
-        expect(divide(26.4, 4)).toEqual(6.6); // decimal numerator
-        expect(divide(3, 1.5)).toEqual(2); // decimal denominator
-        expect(divide(2.4, 1.2)).toEqual(2); // both decimal
-    })
+
 });
 
 // Section A 04. Test the isDivisibleBy() function
+describe('--- isDivisibleBy() function ---', () => {
+    test('Valid requests', () => {
+        expect(isDivisibleBy(10,5,2)).toBeTruthy();
+        expect(isDivisibleBy(150,30,5)).toBeTruthy();
+        expect(isDivisibleBy(5,2.5,1)).toBeTruthy();
+        expect(isDivisibleBy(5,1,2.5)).toBeTruthy();
+        expect(isDivisibleBy(-3,3,-1.5)).toBeTruthy();
+    })
 
+    test('Valid input, invalid requests', () => { // should all be false.
+        expect(isDivisibleBy(10,3,1)).toBeFalsy(); // a not a factor
+        expect(isDivisibleBy(10,1,3)).toBeFalsy(); // b not a factor
+        expect(isDivisibleBy(10,-7,16)).toBeFalsy(); // both not factors
+    })
+
+    test('Invalid inputs', () => {
+        expect(isDivisibleBy()).toBeFalsy();
+        expect(isDivisibleBy(2, 1)).toBeFalsy();
+        expect(isDivisibleBy(true,3,-1.5)).toBeFalsy();
+        expect(isDivisibleBy(-3,undefined,-1.5)).toBeFalsy();
+        expect(isDivisibleBy(-3,3,null)).toBeFalsy();
+        expect(isDivisibleBy({},3,-1.5)).toBeFalsy();
+        expect(isDivisibleBy(-3,[],-1.5)).toBeFalsy();
+        expect(isDivisibleBy(-3,'foobar',-1.5)).toBeFalsy();
+    })
+});
 // Section A 05. Test the areaOrPerimeter() function
 
 // Section A 06. Test the gradeAssignment() function
