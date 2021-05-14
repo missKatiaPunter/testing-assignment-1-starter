@@ -1,6 +1,6 @@
 // A02
 const subtract = (a,b) => {
-    if(typeof(a) != 'number' || typeof(b) != 'number'){
+    if(typeof(a) != 'number' || typeof(b) != 'number') {
         throw new Error('Error: At least 1 required parameter is not a number');
     }
     return a-b;
@@ -8,8 +8,8 @@ const subtract = (a,b) => {
 
 // A03
 const divide = (numerator, denominator) => {
-    if (denominator === 0 || isNaN(denominator)) {
-        throw new Error('The value ${denominator} cannot be used as the denominator');
+    if (denominator === 0 || typeof(denominator) != 'number' || typeof(numerator) != 'number') {
+        throw new Error('Error: At least 1 required parameter is invalid.');
     }
     else {
         return parseFloat(numerator / denominator);

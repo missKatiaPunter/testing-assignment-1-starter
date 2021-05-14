@@ -18,7 +18,7 @@ describe('--- Smoke test ---', () => {
 // Feel free to delete all of the starter test block and make it better
 
 describe('--- Subtraction() function --- ', () => {
-    test('Subtract 2 positive numbers, where the first parameter is larger than the second one', () => 
+    test('Subtract 2 positive numbers, where the first parameter is larger than the second one', () => {
         expect(subtract(5, 1)).toEqual(4);
     });
 
@@ -123,9 +123,48 @@ describe('--- Subtraction() function --- ', () => {
 
 // Section A 03. Test the divide() function
 // Feel free to delete all of the starter test block and make it better
+describe('--- Divide() function ---', () => {
+    test('Divide by 0', () => {
+        expect(() => {
+            divide(1, 0);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+    });
 
-it.skip('Should divide numbers and not allow division by 0', () => {
+    test('Invalid data types', () => {
+        expect(() => {
+            divide(true, 3);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            divide(4, false);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            divide([], 3);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            divide({}, 3);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            divide(3, null);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            divide(7, undefined);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            divide(0, 'hello');
+        }).toThrow('Error: At least 1 required parameter is invalid');
+    });
 
+    test('Valid divison operations', () => {
+        expect(divide(5, 1)).toEqual(5); // larger numerator
+        expect(divide(1, 5)).toEqual(0.2); // larger denominator
+        expect(divide(300, 300)).toEqual(1); // equal
+        expect(divide(-5, 2)).toEqual(-2.5); // negative numerator
+        expect(divide(2, -5)).toEqual(-0.4); // negative denominator
+        expect(divide(-3, -6)).toEqual(0.5); // both negative
+        expect(divide(26.4, 4)).toEqual(6.6); // decimal numerator
+        expect(divide(3, 1.5)).toEqual(2); // decimal denominator
+        expect(divide(2.4, 1.2)).toEqual(2); // both decimal
+    })
 });
 
 // Section A 04. Test the isDivisibleBy() function
