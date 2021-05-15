@@ -82,8 +82,12 @@ const removeUrlAnchor = url => {
     return url.split('#')[0];
 }
 // A09
-const strEndsWith = (str, ending) => str.endsWith(ending);
-
+const strEndsWith = (str, ending) => {
+    if (typeof(str) != 'string' || typeof(ending) != 'string') {
+        throw new Error('Error: Empty or Non-string input.');
+    }
+    return str.endsWith(ending);
+}
 // A10
 const numberToString = num => num.toString();
 

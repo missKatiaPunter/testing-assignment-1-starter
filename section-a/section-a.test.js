@@ -19,7 +19,6 @@ describe('--- Smoke test ---', () => {
 });
 
 // Section A 02. Test the subtraction() function
-// Feel free to delete all of the starter test block and make it better
 
 describe('--- Subtraction() function --- ', () => {
     test('Subtract 2 positive numbers, where the first parameter is larger than the second one', () => {
@@ -370,33 +369,72 @@ describe('--- removeUrlAnchor() function ---', () => {
 
     test('Invalid requests', () => {
         expect(() => {
-            removeUrlAnchor()
+            removeUrlAnchor();
         }).toThrow('Error: Empty or Non-string input.');
         expect(() => {
-            removeUrlAnchor(null)
+            removeUrlAnchor(null);
         }).toThrow('Error: Empty or Non-string input.');
         expect(() => {
-            removeUrlAnchor(undefined)
+            removeUrlAnchor(undefined);
         }).toThrow('Error: Empty or Non-string input.');
         expect(() => {
-            removeUrlAnchor(true)
+            removeUrlAnchor(true);
         }).toThrow('Error: Empty or Non-string input.');
         expect(() => {
-            removeUrlAnchor(false)
+            removeUrlAnchor(false);
         }).toThrow('Error: Empty or Non-string input.');
         expect(() => {
-            removeUrlAnchor([])
+            removeUrlAnchor([]);
         }).toThrow('Error: Empty or Non-string input.');
         expect(() => {
-            removeUrlAnchor({})
+            removeUrlAnchor({});
         }).toThrow('Error: Empty or Non-string input.');
         expect(() => {
-            removeUrlAnchor(35)
+            removeUrlAnchor(35);
         }).toThrow('Error: Empty or Non-string input.');
     });
 });
 
 // Section A 09. Test the strEndsWith() function
+describe('--- strEndsWith() function ---', () => {
+    test('Valid requests', () => {
+        expect(strEndsWith('hello', 'ello')).toBeTruthy();
+        expect(strEndsWith('PYTHON', 'ON')).toBeTruthy();
+        expect(strEndsWith('a£221sdb', '£221sdb')).toBeTruthy();
+    });
 
+    test('Invalid requests', () => {
+        expect(strEndsWith('hello', 'a')).toBeFalsy();
+        expect(strEndsWith('PYTHON', 'ZZZ')).toBeFalsy();
+        expect(strEndsWith('a£221sdb', '£')).toBeFalsy();
+    });
+
+    test('Invalid data types', () => {
+        expect(() => {
+            strEndsWith();
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            strEndsWith(null, 'a');
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            strEndsWith('b', undefined);
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            strEndsWith(true, 'false');
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            strEndsWith('true', false);
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            strEndsWith([], 'er');
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            strEndsWith('aaaa', {});
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            strEndsWith(35, 'foo');
+        }).toThrow('Error: Empty or Non-string input.');
+    });
+});
 
 // Section A 10. Test the numberToString() function
