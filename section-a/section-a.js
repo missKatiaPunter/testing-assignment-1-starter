@@ -35,10 +35,22 @@ const areaOrPerimeter = (l , w) => {
         case false:
             return 2*(l+w);
     }
-} //l === w ? l*w : 2*(l+w);
+}
 
 // A06
 const gradeAssignment = (s1, s2, s3) => {
+    if (typeof(s1) != 'number' || typeof(s2) != 'number' || typeof(s3) != 'number') {
+        throw new Error('Error: At least 1 required parameter is invalid.');
+    }
+
+    if (s1 < 0 || s2 < 0 || s3 < 0){
+        throw new Error('Error: At least 1 required parameter was less than zero.');
+    }
+
+    if (s1 > 100 || s2 > 100 || s3 > 100){
+        throw new Error('Error: At least 1 required parameter was higher than 100 percent.');
+    }
+
     let q=(s1+s2+s3)/3
     if (q>=90){
         return 'A'
@@ -46,7 +58,7 @@ const gradeAssignment = (s1, s2, s3) => {
         return 'B'
     } else if (q>=70) {
         return 'C'
-    }else if (q>=60) {
+    } else if (q>=60) {
         return 	'D'
     } else if (q>=0) {
         return 	'F'
@@ -56,8 +68,12 @@ const gradeAssignment = (s1, s2, s3) => {
 }
 
 // A07
-const disemvowel = str => str.replace(/[aeiou]/gi, '');
-
+const disemvowel = str => {
+    if(typeof(str) != 'string'){
+        throw new Error('Error: Empty or Non-string input.')
+    }
+    return str.replace(/[aeiou]/gi, '');
+}
 // A08
 const removeUrlAnchor = url => url.split('#')[0];
 

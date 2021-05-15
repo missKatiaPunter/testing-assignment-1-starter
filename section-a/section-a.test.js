@@ -224,34 +224,144 @@ describe('--- areaOrPerimiter() function ---', () => {
 
     test('Invalid data types', () => {
         expect(() => {
+            areaOrPerimeter();
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            areaOrPerimeter(3);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
             areaOrPerimeter(true, 3);
-        }).toThrow('Error: At least 1 required parameter is invalid');
+        }).toThrow('Error: At least 1 required parameter is invalid.');
         expect(() => {
             areaOrPerimeter(4, false);
-        }).toThrow('Error: At least 1 required parameter is invalid');
+        }).toThrow('Error: At least 1 required parameter is invalid.');
         expect(() => {
             areaOrPerimeter([], 3);
-        }).toThrow('Error: At least 1 required parameter is invalid');
+        }).toThrow('Error: At least 1 required parameter is invalid.');
         expect(() => {
             areaOrPerimeter({}, 3);
-        }).toThrow('Error: At least 1 required parameter is invalid');
+        }).toThrow('Error: At least 1 required parameter is invalid.');
         expect(() => {
             areaOrPerimeter(3, null);
-        }).toThrow('Error: At least 1 required parameter is invalid');
+        }).toThrow('Error: At least 1 required parameter is invalid.');
         expect(() => {
             areaOrPerimeter(7, undefined);
-        }).toThrow('Error: At least 1 required parameter is invalid');
+        }).toThrow('Error: At least 1 required parameter is invalid.');
         expect(() => {
             areaOrPerimeter(0, 'hello');
-        }).toThrow('Error: At least 1 required parameter is invalid');
+        }).toThrow('Error: At least 1 required parameter is invalid.');
     });
 });
+
 // Section A 06. Test the gradeAssignment() function
+describe('--- gradeAssignment() function ---', () => {
+    test('Valid requests', () => {
+        expect(gradeAssignment(90,90,90)).toBe('A');
+        expect(gradeAssignment(80,80,80)).toBe('B');
+        expect(gradeAssignment(70,70,70)).toBe('C');
+        expect(gradeAssignment(60,60,60)).toBe('D');
+        expect(gradeAssignment(50,50,50)).toBe('F');
+        expect(gradeAssignment(37.5,45.6,98.2)).toBe('D');
+        expect(gradeAssignment(100,100,100)).toBe('A');
+    });
+
+    test('Invalid requests', () => {
+        // negatives
+        expect(() => {
+            gradeAssignment(-10, 70, 30);
+        }).toThrow('Error: At least 1 required parameter was less than zero.');
+        expect(() => {
+            gradeAssignment(10, -70, 30);
+        }).toThrow('Error: At least 1 required parameter was less than zero.');
+        expect(() => {
+            gradeAssignment(10, 70, -30);
+        }).toThrow('Error: At least 1 required parameter was less than zero.');
+        // greater than 100
+        expect(() => {
+            gradeAssignment(101, 70, 30);
+        }).toThrow('Error: At least 1 required parameter was higher than 100 percent.');
+        expect(() => {
+            gradeAssignment(10, 700, 30);
+        }).toThrow('Error: At least 1 required parameter was higher than 100 percent.');
+        expect(() => {
+            gradeAssignment(10, 70, 300);
+        }).toThrow('Error: At least 1 required parameter was higher than 100 percent.');
+    });
+
+    test('Invalid data types', () => {
+        // missing parameters (caught by NaN validation)
+        expect(() => {
+            gradeAssignment();
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            gradeAssignment(1);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            gradeAssignment(1, 1);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        // non number data types
+        expect(() => {
+            gradeAssignment(true, 0, 0);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            gradeAssignment(0, false, 0);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            gradeAssignment(0, 0, []);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            gradeAssignment({}, 0, 0);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            gradeAssignment(0, undefined, 0);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+        expect(() => {
+            gradeAssignment(0, 0, null);
+        }).toThrow('Error: At least 1 required parameter is invalid.');
+    });
+});
 
 // Section A 07. Test the disemvowel() function
+describe('--- disemvowel() function ---', () => {
+    test('Valid requests', () => {
+        expect(disemvowel('aieou')).toBe('');
+        expect(disemvowel('Hello World!')).toBe('Hll Wrld!');
+        expect(disemvowel('')).toBe('');
+        expect(disemvowel('crypt')).toBe('crypt');
+        expect(disemvowel('AEIOU')).toBe('');
+    });
+    test('Invalid requests', () => {
+        expect(() => {
+            disemvowel()
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            disemvowel(null)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            disemvowel(undefined)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            disemvowel(true)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            disemvowel(false)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            disemvowel([])
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            disemvowel({})
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            disemvowel(35)
+        }).toThrow('Error: Empty or Non-string input.');
+    });
+});
 
 // Section A 08. Test the removeUrlAnchor() function
 
+
 // Section A 09. Test the strEndsWith() function
+
 
 // Section A 10. Test the numberToString() function
