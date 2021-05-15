@@ -330,6 +330,7 @@ describe('--- disemvowel() function ---', () => {
         expect(disemvowel('crypt')).toBe('crypt');
         expect(disemvowel('AEIOU')).toBe('');
     });
+
     test('Invalid requests', () => {
         expect(() => {
             disemvowel()
@@ -359,7 +360,41 @@ describe('--- disemvowel() function ---', () => {
 });
 
 // Section A 08. Test the removeUrlAnchor() function
+describe('--- removeUrlAnchor() function ---', () => {
+    test('Valid requests', () => {
+        expect(removeUrlAnchor('Hello World!')).toBe('Hello World!');
+        expect(removeUrlAnchor('https://www.google.co.uk#hello')).toBe('https://www.google.co.uk');
+        expect(removeUrlAnchor('#123#123')).toBe('');
+        expect(removeUrlAnchor('123#124')).toBe('123');
+    });
 
+    test('Invalid requests', () => {
+        expect(() => {
+            removeUrlAnchor()
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            removeUrlAnchor(null)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            removeUrlAnchor(undefined)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            removeUrlAnchor(true)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            removeUrlAnchor(false)
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            removeUrlAnchor([])
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            removeUrlAnchor({})
+        }).toThrow('Error: Empty or Non-string input.');
+        expect(() => {
+            removeUrlAnchor(35)
+        }).toThrow('Error: Empty or Non-string input.');
+    });
+});
 
 // Section A 09. Test the strEndsWith() function
 

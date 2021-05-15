@@ -75,8 +75,12 @@ const disemvowel = str => {
     return str.replace(/[aeiou]/gi, '');
 }
 // A08
-const removeUrlAnchor = url => url.split('#')[0];
-
+const removeUrlAnchor = url => {
+    if (typeof(url) != 'string'){
+        throw new Error('Error: Empty or Non-string input.')
+    }
+    return url.split('#')[0];
+}
 // A09
 const strEndsWith = (str, ending) => str.endsWith(ending);
 
