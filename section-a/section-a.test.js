@@ -168,8 +168,6 @@ describe('--- Divide() function ---', () => {
             divide(0, 'hello');
         }).toThrow('Error: At least 1 required parameter is invalid');
     });
-
-
 });
 
 // Section A 04. Test the isDivisibleBy() function
@@ -205,10 +203,46 @@ describe('--- areaOrPerimiter() function ---', () => {
     test('Valid requests', () => {
         expect(areaOrPerimeter(10,5)).toBe(30);
         expect(areaOrPerimeter(10,10)).toBe(100);
-    });  
+        expect(areaOrPerimeter(0.5,0.5)).toBe(0.25);
+        expect(areaOrPerimeter(0.5,3)).toBe(7);
+    }); 
+
+    test('Invalid requests', () => {
+        expect(() => {
+            areaOrPerimeter(-10, 3);
+        }).toThrow('Error: At least 1 required parameter was less than zero.');
+        expect(() => {
+            areaOrPerimeter(10, -3);
+        }).toThrow('Error: At least 1 required parameter was less than zero.');
+        expect(() => {
+            areaOrPerimeter(-10, -3);
+        }).toThrow('Error: At least 1 required parameter was less than zero.');
+        expect(() => {
+            areaOrPerimeter(-10, -10);
+        }).toThrow('Error: At least 1 required parameter was less than zero.');
+    });
+
     test('Invalid data types', () => {
         expect(() => {
             areaOrPerimeter(true, 3);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            areaOrPerimeter(4, false);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            areaOrPerimeter([], 3);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            areaOrPerimeter({}, 3);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            areaOrPerimeter(3, null);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            areaOrPerimeter(7, undefined);
+        }).toThrow('Error: At least 1 required parameter is invalid');
+        expect(() => {
+            areaOrPerimeter(0, 'hello');
         }).toThrow('Error: At least 1 required parameter is invalid');
     });
 });
