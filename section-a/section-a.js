@@ -70,14 +70,14 @@ const gradeAssignment = (s1, s2, s3) => {
 // A07
 const disemvowel = str => {
     if(typeof(str) != 'string'){
-        throw new Error('Error: Empty or Non-string input.')
+        throw new Error('Error: Empty or Non-string input.');
     }
     return str.replace(/[aeiou]/gi, '');
 }
 // A08
 const removeUrlAnchor = url => {
     if (typeof(url) != 'string'){
-        throw new Error('Error: Empty or Non-string input.')
+        throw new Error('Error: Empty or Non-string input.');
     }
     return url.split('#')[0];
 }
@@ -89,8 +89,12 @@ const strEndsWith = (str, ending) => {
     return str.endsWith(ending);
 }
 // A10
-const numberToString = num => num.toString();
-
+const numberToString = num => {
+    if (typeof(num) != 'number'){
+        throw new Error('Error: Empty or NaN input.');
+    }
+    return num.toString();
+}
 // Not all functions are exported, be careful 👇
 
 module.exports = { 

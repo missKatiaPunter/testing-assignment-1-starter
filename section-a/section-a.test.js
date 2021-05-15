@@ -438,3 +438,38 @@ describe('--- strEndsWith() function ---', () => {
 });
 
 // Section A 10. Test the numberToString() function
+describe('--- numberToString() function ---', () => {
+    test('Valid requests', () => {
+        expect(numberToString(10)).toBe('10');
+        expect(numberToString(-10)).toBe('-10');
+        expect(numberToString(3.14)).toBe('3.14');
+        expect(numberToString(-10.6)).toBe('-10.6');
+    });
+
+    test('Invalid data types', () => {
+        expect(() => {
+            numberToString();
+        }).toThrow('Error: Empty or NaN input.');
+        expect(() => {
+            numberToString(null);
+        }).toThrow('Error: Empty or NaN input.');
+        expect(() => {
+            numberToString(undefined);
+        }).toThrow('Error: Empty or NaN input.');
+        expect(() => {
+            numberToString(true);
+        }).toThrow('Error: Empty or NaN input.');
+        expect(() => {
+            numberToString(false);
+        }).toThrow('Error: Empty or NaN input.');
+        expect(() => {
+            numberToString([]);
+        }).toThrow('Error: Empty or NaN input.');
+        expect(() => {
+            numberToString({});
+        }).toThrow('Error: Empty or NaN input.');
+        expect(() => {
+            numberToString('35');
+        }).toThrow('Error: Empty or NaN input.');
+    });
+});
