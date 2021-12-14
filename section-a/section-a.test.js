@@ -7,7 +7,7 @@ const {
     areaOrPerimeter
 } = require("./section-a.js");
 
-// Section A 01. Wrtite a smoke test
+// Section A 01. Write a smoke test
 
 // Section A 02. Test the subtraction() function
 // Feel free to delete all of the starter test block and make it better
